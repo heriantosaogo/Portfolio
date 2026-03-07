@@ -64,7 +64,16 @@ const Home = () => {
                         <i>"I love coding because every line of code is a step toward turning ideas into reality."</i><br /><br />
                         Building solutions, learning every day, and enjoying the process of creating through code.
                     </p>
-                    <a href="projects" className="btn-primary">View My Projects</a>
+                    <a
+                        href="#projects"
+                        className="btn-primary"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                    >
+                        View My Projects
+                    </a>
                 </div>
                 <div className="home-image-container">
                     <img src={fotoProfile} alt="Saogo Profile" className="home-image" />
