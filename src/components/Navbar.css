@@ -1,0 +1,201 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all var(--transition-speed) ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.navbar-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+
+    /* Rainbow gradient warna-warni */
+    background: linear-gradient(90deg,
+            #ff6b6b,
+            /* merah */
+            #ffa94d,
+            /* oranye */
+            #ffe066,
+            /* kuning */
+            #69db7c,
+            /* hijau */
+            #4dabf7,
+            /* biru */
+            #9775fa,
+            /* ungu */
+            #f783ac,
+            /* pink */
+            #ff6b6b
+            /* balik ke merah (seamless loop) */
+        );
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Animasi geser gradient */
+    animation: rainbowShift 4s linear infinite, logoGlow 4s ease-in-out infinite;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.05);
+    animation-play-state: paused;
+}
+
+/* Gradient bergerak dari kiri ke kanan terus-menerus */
+@keyframes rainbowShift {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 250% center;
+    }
+}
+
+/* Efek glow drop-shadow yang berdenyut */
+@keyframes logoGlow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 4px rgba(167, 139, 250, 0.5));
+    }
+
+    25% {
+        filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.6));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 8px rgba(77, 171, 247, 0.6));
+    }
+
+    75% {
+        filter: drop-shadow(0 0 8px rgba(105, 219, 124, 0.6));
+    }
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+    transition: color var(--transition-speed) ease;
+}
+
+.nav-links::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    bottom: -5px;
+    left: 0;
+    transition: width var(--transition-speed);
+}
+
+.nav-links:hover {
+    color: var(--primary-color);
+}
+
+.nav-links:hover::after {
+    width: 100%;
+}
+
+.menu-icon {
+    display: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.menu-icon svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 65%);
+        font-size: 1.8rem;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        height: auto;
+        position: absolute;
+        top: 70px;
+        right: -100%;
+        left: auto;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        background: rgba(15, 23, 42, 0.98);
+        padding: 0.5rem 0;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-menu.active {
+        background: rgba(15, 23, 42, 0.98);
+        right: 2rem;
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.4s ease;
+        z-index: 1000;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-links {
+        text-align: left;
+        padding: 0.8rem 1.5rem;
+        width: 100%;
+        display: block;
+        font-size: 1rem;
+        color: var(--text-main);
+        font-weight: 500;
+    }
+
+    .nav-links:hover {
+        color: var(--primary-color);
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+}
