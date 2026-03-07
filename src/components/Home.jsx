@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 import NetworkBackground from './NetworkBackground';
+import fotoProfile from '../assets/foto.png';
 
 const phrases = [
     "Full Stack Developer",
@@ -66,7 +67,7 @@ const Home = () => {
                     <a href="projects" className="btn-primary">View My Projects</a>
                 </div>
                 <div className="home-image-container">
-                    <img src="src/assets/foto.png" alt="Saogo Profile" className="home-image" />
+                    <img src={fotoProfile} alt="Saogo Profile" className="home-image" />
                 </div>
             </div>
         </section>
