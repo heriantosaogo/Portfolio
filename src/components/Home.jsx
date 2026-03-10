@@ -61,8 +61,7 @@ const Home = () => {
                         </p>
                     </div>
                     <p className="home-description">
-                        <i>"I love coding because every line of code is a step toward turning ideas into reality."</i><br /><br />
-                        Building solutions, learning every day, and enjoying the process of creating through code.
+                        <i>"I love coding because every line of code is a step toward turning ideas into reality."</i>
                     </p>
                     <a
                         href="#projects"
@@ -72,7 +71,7 @@ const Home = () => {
                             document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
                         }}
                     >
-                        View My Projects
+                        View Portfolio
                     </a>
                 </div>
                 <div className="home-image-container">

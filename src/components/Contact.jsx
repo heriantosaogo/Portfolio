@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.css';
+import IDCard from './IDCard';
+
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -53,10 +55,15 @@ const Contact = () => {
             <div className="container">
                 <h2 className="section-title">Contact Me</h2>
                 <div className="contact-container">
-                    <div className="contact-info">
-                        <h3>Get in Touch</h3>
-                        <p>Email: <a href="mailto:saogoherianto18@gmail.com" className="email-link">saogoherianto18@gmail.com</a></p>
+                    <div className="contact-left">
+                        <IDCard className="id-card--contact" variant="contact" />
+                        <div className="contact-info">
+                            <h3>Get in Touch</h3>
+                            <p>Email: <a href="mailto:saogoherianto18@gmail.com" className="email-link">saogoherianto18@gmail.com</a></p>
+                        </div>
                     </div>
+
+
                     <form className="contact-form" onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="name">Name</label>

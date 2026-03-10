@@ -1,0 +1,315 @@
+.id-card-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    /* Space for the lanyard so it doesn't collide with surrounding layout */
+    padding-top: 140px;
+    transition: opacity 1.5s ease-out, transform 1.5s cubic-bezier(0.17, 0.55, 0.55, 1);
+    width: 100%;
+    isolation: isolate;
+}
+
+.id-card-wrapper.id-card--contact {
+    /* Keep the lanyard inside the contact card panel */
+    padding-top: 24px;
+}
+
+.id-card-wrapper.id-card--contact .id-card-container {
+    width: min(300px, 82vw);
+    cursor: default;
+    z-index: 5;
+    margin-top: 0;
+}
+
+.id-card-wrapper.id-card--contact .moon-logo {
+    font-size: 3.15rem;
+}
+
+.id-card-wrapper.id-card--contact .profile-photo-container {
+    width: 210px;
+    height: 210px;
+}
+
+.id-card-clip {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 18px;
+    border-radius: 7px;
+    background: #0b0b0f;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+}
+
+.id-card-clip::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 12px;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 10px;
+    border: 3px solid #0b0b0f;
+    border-top: 0;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.id-card-wrapper.id-card--contact .moon-header {
+    padding-top: 28px;
+    height: 120px;
+}
+
+.id-card-wrapper.id-card--contact .moon-theme {
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow:
+        0 18px 34px rgba(0, 0, 0, 0.42),
+        0 1px 0 rgba(255, 255, 255, 0.06) inset;
+}
+
+.id-card-wrapper.hidden {
+    opacity: 0 !important;
+    transform: translateY(-150px) !important;
+}
+
+.id-card-wrapper.show {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Lanyard Styles */
+.id-card-lanyard {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 20;
+    /* Higher than card to overlap correctly */
+    pointer-events: none;
+}
+
+.lanyard-strap {
+    width: 60px;
+    height: 240px;
+    background: linear-gradient(90deg, #1e40af 50%, #f97316 50%);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 50% 100%, 0% 88%);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.strap-text {
+    transform: rotate(-90deg);
+    color: white;
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    opacity: 0.95;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.lanyard-hardware {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -22px;
+}
+
+.clasp {
+    width: 50px;
+    height: 45px;
+    background: #111;
+    border-radius: 6px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hook {
+    width: 8px;
+    height: 50px;
+    background: #000;
+    position: relative;
+    transform: translateY(-8px);
+}
+
+.hook::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    /* Deeper into the slot */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 25px;
+    border: 6px solid #000;
+    border-radius: 50% 50% 20% 20%;
+    background: transparent;
+    z-index: 21;
+}
+
+
+/* Container */
+.id-card-container {
+    width: min(320px, 86vw);
+    aspect-ratio: 2 / 3;
+    height: auto;
+    cursor: grab;
+    position: relative;
+    z-index: 5;
+    margin-top: -12px;
+    touch-action: pan-y;
+}
+
+
+/* Moon Theme Card */
+.moon-theme {
+    background: linear-gradient(135deg, #f97316 40%, #172554 40%);
+    border-radius: 25px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.moon-header {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.moon-slot {
+    width: 50px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.moon-logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: white;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -2px;
+    width: 100%;
+    text-align: center;
+}
+
+.moon-body {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.profile-photo-container {
+    width: 220px;
+    height: 220px;
+    background: #fff;
+    border: 6px solid #000;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.1), transparent);
+    pointer-events: none;
+}
+
+
+.moon-footer {
+    height: 60px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.idcard-footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.idcard-footer-name {
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.idcard-footer-info {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.6rem;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-width: 768px) {
+    .id-card-wrapper {
+        padding-top: 120px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .id-card-lanyard {
+        top: -110px;
+    }
+
+    .lanyard-strap {
+        width: 52px;
+        height: 220px;
+    }
+
+    .moon-logo {
+        font-size: 3rem;
+    }
+
+    .profile-photo-container {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+
+.id-card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%, rgba(0, 0, 0, 0.2) 100%);
+    pointer-events: none;
+}

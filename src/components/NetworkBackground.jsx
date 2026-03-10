@@ -1,20 +1,60 @@
 import React, { useEffect, useRef } from 'react';
 
+class NetworkParticle {
+    constructor(canvas, ctx) {
+        this.canvas = canvas;
+        this.ctx = ctx;
+
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 1.5;
+        this.vy = (Math.random() - 0.5) * 1.5;
+        this.radius = Math.random() * 2 + 1;
+    }
+
+    update() {
+        const { canvas } = this;
+
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
+        if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+    }
+
+    draw() {
+        const { ctx } = this;
+
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(99, 102, 241, 0.5)';
+        ctx.fill();
+    }
+}
+
 const NetworkBackground = () => {
     const canvasRef = useRef(null);
 
     useEffect(() => {
         const canvas = canvasRef.current;
+        if (!canvas) return;
+
         const ctx = canvas.getContext('2d');
+        if (!ctx) return;
 
         const resizeCanvas = () => {
-            if (canvas.parentElement) {
-                canvas.width = canvas.parentElement.offsetWidth;
-                canvas.height = canvas.parentElement.offsetHeight;
-            } else {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
+            const parent = canvas.parentElement;
+            const cssWidth = parent ? parent.offsetWidth : window.innerWidth;
+            const cssHeight = parent ? parent.offsetHeight : window.innerHeight;
+            const dpr = window.devicePixelRatio || 1;
+
+            canvas.width = Math.max(1, Math.floor(cssWidth * dpr));
+            canvas.height = Math.max(1, Math.floor(cssHeight * dpr));
+            canvas.style.width = `${cssWidth}px`;
+            canvas.style.height = `${cssHeight}px`;
+
+            // Draw in CSS pixels.
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         };
 
         resizeCanvas();
@@ -24,41 +64,18 @@ const NetworkBackground = () => {
         const particleCount = 70; // Adjust for density
         const connectionDistance = 150;
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                // Random velocity
-                this.vx = (Math.random() - 0.5) * 1.5;
-                this.vy = (Math.random() - 0.5) * 1.5;
-                this.radius = Math.random() * 2 + 1;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                // Bounce off edges smoothly
-                if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-                if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(99, 102, 241, 0.5)'; // Primary theme color
-                ctx.fill();
-            }
-        }
-
         for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
+            particles.push(new NetworkParticle(canvas, ctx));
         }
 
         let animationFrameId;
 
         const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Clear in CSS pixels (because we scaled via setTransform).
+            const parent = canvas.parentElement;
+            const cssWidth = parent ? parent.offsetWidth : window.innerWidth;
+            const cssHeight = parent ? parent.offsetHeight : window.innerHeight;
+            ctx.clearRect(0, 0, cssWidth, cssHeight);
 
             // Update and draw particles
             for (let i = 0; i < particles.length; i++) {

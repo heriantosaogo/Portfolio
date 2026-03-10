@@ -55,12 +55,12 @@ const Footer = () => {
                             { label: 'Home', id: 'home' },
                             { label: 'About', id: 'about' },
                             { label: 'Skills', id: 'skills' },
-                            { label: 'Projects', id: 'projects' },
+                            { label: 'Portfolio', id: 'projects' },
                             { label: 'Contact', id: 'contact' },
                         ].map(({ label, id }) => (
                             <li key={id}>
                                 <a href={`#${id}`} onClick={(e) => scrollToSection(e, id)}>
-                                    <span className="link-arrow">›</span> {label}
+                                    <span className="link-arrow">{'>'}</span> {label}
                                 </a>
                             </li>
                         ))}
@@ -103,8 +103,8 @@ const Footer = () => {
             {/* Footer Bottom */}
             <div className="footer-bottom">
                 <div className="container footer-bottom-inner">
-                    <p>© {new Date().getFullYear()} <strong>Herianto Saogo</strong>. All rights reserved.</p>
-                    <p className="footer-made">Made with <span className="heart">♥</span> using React</p>
+                    <p>(c) {new Date().getFullYear()} <strong>Herianto Saogo</strong>. All rights reserved.</p>
+                    <p className="footer-made">Made with <span className="heart">{'<3'}</span> using React</p>
                 </div>
             </div>
         </footer>

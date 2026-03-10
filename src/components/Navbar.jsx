@@ -5,9 +5,10 @@ const navItems = [
   { label: 'Home', id: 'home' },
   { label: 'About', id: 'about' },
   { label: 'Skills', id: 'skills' },
-  { label: 'Projects', id: 'projects' },
+  { label: 'Portfolio', id: 'projects' },
   { label: 'Contact', id: 'contact' },
 ];
+
 
 const Navbar = () => {
   const [click, setClick] = useState(false);

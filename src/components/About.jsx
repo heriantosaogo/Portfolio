@@ -9,9 +9,9 @@ const About = () => {
                 <div className="about-content">
                     <p>
                         I am an Information Systems student with a strong passion for web development.
-                        I enjoy building modern and responsive web applications using technologies such as HTML, CSS, JavaScript, React, PHP, and Laravel.
+                        I'm enjoy building modern and responsive web applications using technologies such as HTML, CSS, JavaScript, React, PHP, and Laravel.
 
-                        I focus on creating efficient, user-friendly, and scalable web solutions while continuously improving my problem-solving skills.
+                        I'm focus on creating efficient, user-friendly, and scalable web solutions while continuously improving my problem-solving skills.
                         I am always eager to learn new technologies and explore better ways to build impactful digital products.
                     </p>
 
@@ -21,7 +21,7 @@ const About = () => {
                             <a href="https://github.com/heriantosaogo" className="social-icon github" target="_blank" rel="noopener noreferrer">
                                 <i className="devicon-github-original"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/heriantosaogo/" className="social-icon linkedin" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.linkedin.com/in/herianto-saogo/" className="social-icon linkedin" target="_blank" rel="noopener noreferrer">
                                 <i className="devicon-linkedin-plain"></i>
                             </a>
                             <a href="https://www.instagram.com/saogo_her/" className="social-icon instagram" target="_blank" rel="noopener noreferrer">
