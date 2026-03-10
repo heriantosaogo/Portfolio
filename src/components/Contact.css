@@ -1,5 +1,6 @@
 .contact-section {
     background-color: var(--background-dark);
+    align-items: center;
 }
 
 .contact-container {
@@ -22,6 +23,7 @@
     gap: 1.25rem;
     align-items: center;
     padding-top: 0.75rem;
+    justify-self: center;
 }
 
 .contact-info {
@@ -32,7 +34,7 @@
 
 .contact-info h3 {
     font-size: 1.8rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.9rem;
     color: #fff;
 }
 
@@ -59,6 +61,7 @@
     width: 100%;
     max-width: 560px;
     justify-self: end;
+    min-width: 0;
 }
 
 .form-group {
@@ -87,6 +90,11 @@
     transition: all 0.3s ease;
 }
 
+.form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
@@ -100,15 +108,42 @@
     margin-top: 1rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .contact-container {
         grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 2rem;
+        gap: 2.25rem;
+        padding: 2.25rem;
     }
 
     .contact-form {
         justify-self: stretch;
         max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact-section {
+        align-items: flex-start;
+    }
+
+    .contact-container {
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .contact-form .btn-primary {
+        align-self: stretch;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .contact-container {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .contact-info h3 {
+        font-size: 1.5rem;
     }
 }

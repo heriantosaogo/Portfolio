@@ -303,6 +303,21 @@
     }
 }
 
+@media screen and (max-width: 480px) {
+    .id-card-wrapper.id-card--contact .id-card-container {
+        width: min(268px, 90vw);
+    }
+
+    .id-card-wrapper.id-card--contact .moon-logo {
+        font-size: 2.7rem;
+    }
+
+    .id-card-wrapper.id-card--contact .profile-photo-container {
+        width: 190px;
+        height: 190px;
+    }
+}
+
 
 .id-card-glow {
     position: absolute;
